@@ -69,6 +69,7 @@ function amountDelayedFlight(_, response) {
 
 function mostPopularCity(_, response) {
     getData()
+        .then(filterOutbound)
         .then(findPopulariest)
         .then(res => response.json(res))
         .catch(error => console.log("Error: ", error))
@@ -82,6 +83,7 @@ function quickGetaway(_, response) {
 }
 
 
+const portToListen = 3000
 const app = express();
 app.get('/', mainPage)
 app.get('/amountFlight', amountFlight)
@@ -94,4 +96,4 @@ app.get('/amountDelayedFlight', amountDelayedFlight)
 app.get('/mostPopularCountry', mostPopularCity)
 app.get('/quickGetaway', quickGetaway)
 
-app.listen(process.env.PORT || 3000, () => console.log('App available on localhost:3000'))
+app.listen(process.env.PORT || portToListen, () => console.log(`App available`))

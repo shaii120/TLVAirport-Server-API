@@ -5,6 +5,7 @@ const flightNumber = "CHFLTN"
 const checkInCounter = "CHCINT"
 const countryName = "CHLOCCT"
 const cityName = "CHLOC1T"
+const flightStatus = "CHRMINE"
 
 function isOutbound(val) {
     return val[checkInCounter] == null
@@ -43,7 +44,7 @@ export function filterInbound(res) {
 }
 
 export function filterCountry(res, country) {
-    return res.filter(val => val[countryName] == country)
+    return res.filter(val => val[countryName].toUpperCase() == country.toUpperCase())
 }
 
 export function filterDelayed(res) {
@@ -83,9 +84,6 @@ export function findQuickGateway(response, res) {
         response.status(406).send('Error 406: No result was found')
         return
     }
-
-    console.log(earliestInbound)
-    console.log(latestOutbound)
 
     return {
         departure: latestOutbound[flightCode] + latestOutbound[flightNumber],
