@@ -23,7 +23,7 @@ function amountOutboundFlight(_, response) {
 }
 
 function amountInboundFlight(_, response) {
-    getDataata()
+    getData()
         .then(filterInbound)
         .then(getAmount)
         .then(res => response.json(res))

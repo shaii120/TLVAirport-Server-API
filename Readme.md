@@ -4,7 +4,7 @@
 2. Build the project by using the command:\
     `docker build -t <project_name> .`
 3. To run the server use:\
-    `docker run -p 8080:8080 <project_name>`
+    `docker run -p 8080:3000 <project_name>`
 
 ### To run the server on the current machine:
 1. Make sure you have JavaScript and npm installed.
@@ -12,7 +12,7 @@
 3. Install the relevant modules by using the command:\
     `npm install`
 4. To run the server use:\
-    `npm start prod`
+    `npm run prod`
 
 The server supports the following API request:\
 `/amountFlight` - Number of flights (inbound & outbound).\

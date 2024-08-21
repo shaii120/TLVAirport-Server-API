@@ -80,7 +80,7 @@ export function findQuickGateway(response, res) {
     const earliestInbound = inbound.reduce((a, b) => Date.parse(a[estimateDeparture]) < Date.parse(b[estimateDeparture]) ? a : b)
     const latestOutbound = outbound.reduce((a, b) => Date.parse(a[estimateDeparture]) > Date.parse(b[estimateDeparture]) ? a : b)
 
-    if (earliestInbound[estimateDeparture] > latestOutbound[estimateDeparture]) {
+    if (Date.parse(earliestInbound[estimateDeparture]) > Date.parse(latestOutbound[estimateDeparture])) {
         response.status(406).send('Error 406: No result was found')
         return
     }
